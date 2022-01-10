@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+<!-- navbar -->
+{% block navbar %}
+<nav class="navbar is-fixed-top is-black is-size-6" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item">【ファイル管理】</a>
+    {# ハンバーガアイコンのため以下の5行とbase.htmlでのjsスクリプトが必要 #}
+    <a role="button" class="navbar-burger " aria-label="menu" aria-expanded="false" data-target="navbarMypage">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div id="navbarMypage" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" href="{% url 'library:file_index' %}">ファイル一覧</a>
+      <a class="navbar-item" href="{% url 'library:category_index' %}">カテゴリ一覧</a>
+      <a class="navbar-item" href="{% url 'library:big_category_index' %}">親カテゴリ一覧</a>
+    </div>
+    <div class="navbar-end">
+      <a class="navbar-item" href="{% url 'bbs:list' %}">Home</a>
+    </div>
+  </div>
+</nav>
+{% endblock navbar %}
+
+{% block content %}
+<div class="container with_mobile">
+  <br>
+  <div class="content">
+    <h3>カテゴリ一覧</h3>
+    {% if big_pk %}
+      <a href="{% url 'library:category_create' big_pk %}" class="button is-primary">新規作成</a>
+    {% else %}
+      <a href="{% url 'library:category_create' %}" class="button is-primary">新規作成</a>
+    {% endif %}
+    <!--<a href="{% url 'notice:news_card' %}" class="button is-primary">戻る</a>--> 
+    <a class="button is-primary" href="javascript:void(0);" onclick="window.history.back();">前に戻る</a>
+  </div>
+  <br>
+  <!--<div class="scroll">-->
+  <table class="table is-narrow">
+    <thead>
+      <tr>
+        <th class="has-text-centered">カテゴリ名</th>
+        <th class="has-text-centered">ファイルパス名</th>
+        <th class="has-text-centered">親カテゴリ名</th>
+        <th class="has-text-centered">ログイン制限</th>
+        <th class="has-text-centered">rank</th>
+        <th class="has-text-centered">#</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for category in category_list %}
+      <tr>
+        <td class="has-text-left"><div class="cell_min_200">{{ category.name }}</div></td>
+        <td class="has-text-left">{{ category.path_name }}</td>
+        <td class="has-text-left">{{ category.parent }}</td>
+        <td class="has-text-centered">{{ category.restrict }}</td>
+        <td class="has-text-centered">{{ category.rank }}</td>
+        <td class="has-text-left nowrap">
+          <a href="{% url 'library:category_update' category.pk %}" class="button has-background-grey-lighter is-small">
+            更新
+          </a>
+          <a href="{% url 'library:category_delete' category.pk %}" class="button has-background-grey-lighter is-small">
+            削除
+          </a>
+          <a href="{% url 'library:file_category' category.pk %}" class="button has-background-grey-lighter is-small">
+            ファイル一覧
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <!--</div>-->
+  <br>
+</div>
+{% endblock %}

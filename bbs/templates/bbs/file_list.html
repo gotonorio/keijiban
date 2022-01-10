@@ -1,4 +1,4 @@
-{% extends "base_single_page.html" %}
+{% extends "base.html" %}
 
 <!-- navbar -->
 {% block navbar %}
@@ -14,13 +14,12 @@
   </div>
   <div id="navbarMypage" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item" href="{% url 'library:file_index' %}">ファイル一覧</a>
-      <a class="navbar-item" href="{% url 'library:category_index' %}">カテゴリ一覧</a>
-      <a class="navbar-item" href="{% url 'library:big_category_index' %}">親カテゴリ一覧</a>
+      <a class="navbar-item" href="{% url 'bbs:list' %}">ファイル一覧</a>
+      {% comment %} <a class="navbar-item" href="{% url 'library:category_index' %}">カテゴリ一覧</a> {% endcomment %}
     </div>
-    <div class="navbar-end">
-      <a class="navbar-item" href="{% url 'notice:news_card' %}">ホームに戻る</a>
-    </div>
+    {% comment %} <div class="navbar-end">
+      <a class="navbar-item" href="{% url 'register:news_card' %}">ホームに戻る</a>
+    </div> {% endcomment %}
   </div>
 </nav>
 {% endblock navbar %}
@@ -30,6 +29,7 @@
   <br>
   <div class="content">
     <h3>ファイル一覧</h3>
+{% comment %} 
     {% if category_pk %}
       <!-- カテゴリ一覧からカテゴリ別のファイル一覧で表示 -->
       <a href="{% url 'library:file_create' category_pk %}" class="button is-primary">更新アップロード</a>
@@ -38,6 +38,7 @@
     {% endif %}
     <!--<a href="{% url 'notice:news_card' %}" class="button is-primary">戻る</a>-->
     <a class="button is-primary" href="javascript:void(0);" onclick="window.history.back();">前に戻る</a>
+{% endcomment %}
   </div>
   <br>
   <table class="table is-narrow is-bordered is-striped">

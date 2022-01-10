@@ -1,8 +1,8 @@
-from django.views import generic
+from bbs.forms import FileForm
+from bbs.models import File
 from django.contrib.auth.mixins import PermissionRequiredMixin
-from library.forms import FileForm
-from library.models import File
 from django.urls import reverse_lazy
+from django.views import generic
 
 
 class FileCreateView(PermissionRequiredMixin, generic.CreateView):
