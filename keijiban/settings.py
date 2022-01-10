@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'keijiban.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'kb.sqlite3',
+        'NAME': BASE_DIR / 'kb_dev.sqlite3',
     }
 }
 

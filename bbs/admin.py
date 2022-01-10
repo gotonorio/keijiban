@@ -1,12 +1,5 @@
 from django.contrib import admin
-from bbs.models import Category, File
-
-
-class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('name', 'rank', 'created_at')
-
-
-admin.site.register(Category, CategoryAdmin)
+from bbs.models import File
 
 
 class FileAdmin(admin.ModelAdmin):

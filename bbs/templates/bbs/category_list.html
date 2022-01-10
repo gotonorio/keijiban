@@ -14,9 +14,9 @@
   </div>
   <div id="navbarMypage" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item" href="{% url 'library:file_index' %}">ファイル一覧</a>
-      <a class="navbar-item" href="{% url 'library:category_index' %}">カテゴリ一覧</a>
-      <a class="navbar-item" href="{% url 'library:big_category_index' %}">親カテゴリ一覧</a>
+      <a class="navbar-item" href="{% url 'bbs:file_index' %}">ファイル一覧</a>
+      <a class="navbar-item" href="{% url 'bbs:category_index' %}">カテゴリ一覧</a>
+      <a class="navbar-item" href="{% url 'bbs:big_category_index' %}">親カテゴリ一覧</a>
     </div>
     <div class="navbar-end">
       <a class="navbar-item" href="{% url 'bbs:list' %}">Home</a>
@@ -31,9 +31,9 @@
   <div class="content">
     <h3>カテゴリ一覧</h3>
     {% if big_pk %}
-      <a href="{% url 'library:category_create' big_pk %}" class="button is-primary">新規作成</a>
+      <a href="{% url 'bbs:category_create' big_pk %}" class="button is-primary">新規作成</a>
     {% else %}
-      <a href="{% url 'library:category_create' %}" class="button is-primary">新規作成</a>
+      <a href="{% url 'bbs:category_create' %}" class="button is-primary">新規作成</a>
     {% endif %}
     <!--<a href="{% url 'notice:news_card' %}" class="button is-primary">戻る</a>--> 
     <a class="button is-primary" href="javascript:void(0);" onclick="window.history.back();">前に戻る</a>
@@ -60,13 +60,13 @@
         <td class="has-text-centered">{{ category.restrict }}</td>
         <td class="has-text-centered">{{ category.rank }}</td>
         <td class="has-text-left nowrap">
-          <a href="{% url 'library:category_update' category.pk %}" class="button has-background-grey-lighter is-small">
+          <a href="{% url 'bbs:category_update' category.pk %}" class="button has-background-grey-lighter is-small">
             更新
           </a>
-          <a href="{% url 'library:category_delete' category.pk %}" class="button has-background-grey-lighter is-small">
+          <a href="{% url 'bbs:category_delete' category.pk %}" class="button has-background-grey-lighter is-small">
             削除
           </a>
-          <a href="{% url 'library:file_category' category.pk %}" class="button has-background-grey-lighter is-small">
+          <a href="{% url 'bbs:file_category' category.pk %}" class="button has-background-grey-lighter is-small">
             ファイル一覧
           </a>
         </td>

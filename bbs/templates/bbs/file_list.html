@@ -15,7 +15,7 @@
   <div id="navbarMypage" class="navbar-menu">
     <div class="navbar-start">
       <a class="navbar-item" href="{% url 'bbs:list' %}">ファイル一覧</a>
-      {% comment %} <a class="navbar-item" href="{% url 'library:category_index' %}">カテゴリ一覧</a> {% endcomment %}
+      {% comment %} <a class="navbar-item" href="{% url 'bbs:category_index' %}">カテゴリ一覧</a> {% endcomment %}
     </div>
     {% comment %} <div class="navbar-end">
       <a class="navbar-item" href="{% url 'register:news_card' %}">ホームに戻る</a>
@@ -32,9 +32,9 @@
 {% comment %} 
     {% if category_pk %}
       <!-- カテゴリ一覧からカテゴリ別のファイル一覧で表示 -->
-      <a href="{% url 'library:file_create' category_pk %}" class="button is-primary">更新アップロード</a>
+      <a href="{% url 'bbs:file_create' category_pk %}" class="button is-primary">更新アップロード</a>
     {% else %}
-      <a href="{% url 'library:file_create' %}" class="button is-primary">新規アップロード</a>
+      <a href="{% url 'bbs:file_create' %}" class="button is-primary">新規アップロード</a>
     {% endif %}
     <!--<a href="{% url 'notice:news_card' %}" class="button is-primary">戻る</a>-->
     <a class="button is-primary" href="javascript:void(0);" onclick="window.history.back();">前に戻る</a>
@@ -55,15 +55,15 @@
       {% for file in file_list %}
       <tr>
         <td class="has-text-left">{{file.title}}</td>
-        {#<td class="nowrap"><a href="{% url 'library:file_category' file.category.pk %}">{{file.category.name}}</a></td>#}
+        {#<td class="nowrap"><a href="{% url 'bbs:file_category' file.category.pk %}">{{file.category.name}}</a></td>#}
         <td class="nowrap">{{file.category.name}}</td>
         <td class="has-text-centered">{{ file.alive }}</td>
         <td class="has-text-centered">{{ file.rank }}</td>
         <td class="nowrap">
-          <a href="{% url 'library:file_update' file.pk %}" class="button has-background-grey-lighter is-small">
+          <a href="{% url 'bbs:file_update' file.pk %}" class="button has-background-grey-lighter is-small">
             更新
           </a>
-          <a href="{% url 'library:file_delete' file.pk %}" class="button has-background-grey-lighter is-small">
+          <a href="{% url 'bbs:file_delete' file.pk %}" class="button has-background-grey-lighter is-small">
             削除
           </a>
         </td>
