@@ -11,11 +11,6 @@ urlpatterns = [
     path('', views.Login.as_view(), name='login'),
     path('login/', views.Login.as_view(), name='login'),
     path('logout/', views.Logout.as_view(), name='logout'),
-    path('mypage', views.MypageView.as_view(), name='mypage'),
-    path('operate_data/', views.OperateDataView.as_view(), name='operate_data'),
-    path('operate_repair_data/', views.OperateRepairDataView.as_view(),
-         name='operate_repair_data'),
-    path('master_data/', views.MasterDataView.as_view(), name='master_data'),
     # ユーザー登録・修正
     path('signup/', user_operator.TempUserCreateView.as_view(), name='signup'),
     path('signup_done/', user_operator.TempUserDoneView.as_view(), name='temp_user_done'),

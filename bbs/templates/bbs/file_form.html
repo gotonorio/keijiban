@@ -14,10 +14,8 @@
   </div>
   <div id="navbarMypage" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item" href="{% url 'notice:news_card' %}">ホーム</a>
-      <a class="navbar-item" href="{% url 'bbs:file_index' %}">ファイル一覧</a>
-      <a class="navbar-item" href="{% url 'bbs:category_index' %}">カテゴリ一覧</a>
-      <a class="navbar-item" href="{% url 'bbs:big_category_index' %}">親カテゴリ一覧</a>
+      <a class="navbar-item" href="{% url 'bbs:file_list' %}">掲示板</a>
+      <a class="navbar-item" href="{% url 'bbs:file_list' %}">ファイル一覧</a>
     </div>
     <div class="navbar-end">
       <a class="navbar-item" href="javascript:void(0);" onclick="window.history.back();">戻る</a>

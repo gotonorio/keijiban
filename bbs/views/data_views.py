@@ -13,7 +13,7 @@ class FileCreateView(PermissionRequiredMixin, generic.CreateView):
     permission_required = ("bbs.add_file")
     # 権限がない場合、Forbidden 403を返す。これがない場合はログイン画面に飛ばす。
     raise_exception = True
-    success_url = reverse_lazy('bbs:file_index')
+    success_url = reverse_lazy('bbs:file_list')
 
 
 class FileUpdateView(PermissionRequiredMixin, generic.UpdateView):
@@ -24,7 +24,7 @@ class FileUpdateView(PermissionRequiredMixin, generic.UpdateView):
     permission_required = ("bbs.add_file")
     # 権限がない場合、Forbidden 403を返す。これがない場合はログイン画面に飛ばす。
     raise_exception = True
-    success_url = reverse_lazy('bbs:file_index')
+    success_url = reverse_lazy('bbs:file_list')
 
 
 class FileDeleteView(PermissionRequiredMixin, generic.DeleteView):
@@ -35,7 +35,7 @@ class FileDeleteView(PermissionRequiredMixin, generic.DeleteView):
     permission_required = ("bbs.add_file")
     # 権限がない場合、Forbidden 403を返す。これがない場合はログイン画面に飛ばす。
     raise_exception = True
-    success_url = reverse_lazy('bbs:file_index')
+    success_url = reverse_lazy('bbs:file_list')
 
 
 class FileListView(PermissionRequiredMixin, generic.ListView):
