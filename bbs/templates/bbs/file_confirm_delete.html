@@ -14,8 +14,8 @@
   </div>
   <div id="navbarMypage" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item" href="{% url 'bbs:file_list' %}">掲示板</a>
-      <a class="navbar-item" href="{% url 'bbs:bbs' %}">ファイル一覧</a>
+      <a class="navbar-item" href="{% url 'bbs:list' %}">掲示板</a>
+      <a class="navbar-item" href="{% url 'bbs:file_list' %}">ファイル一覧</a>
     </div>
   </div>
 </nav>
@@ -23,14 +23,17 @@
 
 {% block content %}
 <div class="container">
+  <br>
   <form action="" method="POST" enctype='multipart/form-data'>
     <div class="content has-text-centered">
       <p>タイトル:{{ file.title }}</p>
-      <p>カテゴリ名:{{ file.category.name }}</p>
+      <p><img src="{{file.img.url}}" style="width: 500px; auto;"></p>
+      <br>
       <button type="submit" class="button is-danger">削除する</button>
       <a class="button is-primary" href="javascript:void(0);" onclick="window.history.back();">戻る</a>
     </div>
     {% csrf_token %}
   </form>
+  <br>
 </div>
 {% endblock %}

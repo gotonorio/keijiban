@@ -21,7 +21,8 @@ def get_upload_to(instance, filename):
 class File(models.Model):
     """ アップロードするイメージファイル """
     title = models.CharField(verbose_name='タイトル', max_length=32)
-    summary = models.TextField(verbose_name='概要', blank=True, null=True)
+    # summary = models.TextField(verbose_name='概要', blank=True, null=True)
+    summary = models.CharField(verbose_name='概要', max_length=128, blank=True, null=True)
     img = models.ImageField(verbose_name='写真ファイル', upload_to=get_upload_to, null=True, blank=True)
     rank = models.IntegerField(verbose_name='表示順', default=0)
     created_at = models.DateTimeField(verbose_name='作成日', default=timezone.now)
