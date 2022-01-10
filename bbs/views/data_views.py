@@ -36,3 +36,11 @@ class FileDeleteView(PermissionRequiredMixin, generic.DeleteView):
     # 権限がない場合、Forbidden 403を返す。これがない場合はログイン画面に飛ばす。
     raise_exception = True
     success_url = reverse_lazy('bbs:file_index')
+
+
+class FileListView(PermissionRequiredMixin, generic.ListView):
+    """ 掲示板list一覧 """
+    model = File
+    template_name = "bbs/file_list.html"
+    permission_required = ("bbs.add_file")
+    queryset = File.objects.all().order_by('-created_at')
