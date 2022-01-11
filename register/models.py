@@ -28,7 +28,7 @@ def post_save_user_signal_handler(sender, instance, created, **kwargs):
         try:
             group = Group.objects.get(name='guest')
         except ObjectDoesNotExist:
-            raise Http404("guestグループが存在しません。管理者に連絡してください。")
+            instance.save()
         else:
             instance.groups.add(group)
             instance.save()
