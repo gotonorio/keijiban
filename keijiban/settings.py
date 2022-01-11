@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'keijiban.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'kb_dev.sqlite3',
+        'NAME': BASE_DIR / 'kb.sqlite3',
     }
 }
 
@@ -129,6 +129,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # ------------------------------------------------------------------
 # user setting
 # ------------------------------------------------------------------
+VERSION_NO = '1.0.0 β 2022-01-11'
 AUTH_USER_MODEL = 'register.User'
 # 写真サイズは2MB以下
 LIMMIT_IMAGE_SIZE = 2097152
@@ -174,7 +175,6 @@ if DEBUG:
         level=logging.DEBUG,
         format='%(asctime)s %(levelname)s %(message)s',
     )
-    VERSION_NO = ' 開発版 0.1.0 2022-01-11'
 else:
     # for nginx
     STATIC_ROOT = '/code/static'
@@ -185,4 +185,3 @@ else:
         filename='/my_log_file.log',
         filemode='a'
     )
-    VERSION_NO = '0.0.0 2022-01-11'
