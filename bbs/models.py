@@ -13,7 +13,7 @@ def get_upload_to(instance, filename):
     media/カテゴリのpath/filename
     """
     try:
-        path = os.path.join(str(instance.category.path_name), filename)
+        path = os.path.join(settings.IMAGE_PATH, filename)
     except Exception as e:
         _ = e
         path = os.path.join('default', filename)
@@ -30,7 +30,6 @@ def image_size(value):
 class File(models.Model):
     """ アップロードするイメージファイル """
     title = models.CharField(verbose_name='タイトル', max_length=32)
-    # summary = models.TextField(verbose_name='概要', blank=True, null=True)
     summary = models.CharField(verbose_name='概要', max_length=128, blank=True, null=True)
     img = models.ImageField(verbose_name='写真ファイル', upload_to=get_upload_to,
                             validators=[image_size], null=True, blank=True)

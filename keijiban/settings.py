@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'register.apps.RegisterConfig',
     'bbs.apps.BbsConfig',
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 MIDDLEWARE = [
@@ -136,6 +137,7 @@ LIMMIT_IMAGE_SIZE = 2097152
 # https://qiita.com/okoppe8/items/86776b8df566a4513e96
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = "/media/"
+IMAGE_PATH = "keijiban"
 
 LOGIN_URL = 'register:login'
 LOGIN_REDIRECT_URL = 'bbs:file_list'
