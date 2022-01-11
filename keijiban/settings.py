@@ -131,8 +131,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # ------------------------------------------------------------------
 VERSION_NO = '1.0.0 β 2022-01-11'
 AUTH_USER_MODEL = 'register.User'
-# 写真サイズは2MB以下
-LIMMIT_IMAGE_SIZE = 2097152
+# 写真サイズは5MB以下
+LIMMIT_IMAGE_SIZE = 5242880
 
 # ファイルアップロード用
 # https://qiita.com/okoppe8/items/86776b8df566a4513e96

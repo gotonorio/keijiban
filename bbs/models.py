@@ -24,7 +24,8 @@ def image_size(value):
     """ アップロード写真のサイズを制限 """
     limit = settings.LIMMIT_IMAGE_SIZE
     if value.size > limit:
-        raise ValidationError(f'ファイルサイズは {limit} byte以下にしてください。')
+        mb = limit/1024/1024
+        raise ValidationError(f'ファイルサイズは {mb}MB 以下にしてください。')
 
 
 class File(models.Model):
