@@ -172,7 +172,7 @@ if DEBUG:
         level=logging.DEBUG,
         format='%(asctime)s %(levelname)s %(message)s',
     )
-    VERSION_NO = ' 開発版 2.2.0 2022-01-09'
+    VERSION_NO = ' 開発版 0.1.0 2022-01-11'
 else:
     # for nginx
     STATIC_ROOT = '/code/static'
@@ -183,4 +183,4 @@ else:
         filename='/my_log_file.log',
         filemode='a'
     )
-    VERSION_NO = '2.2.0 2022-01-09'
+    VERSION_NO = '0.0.0 2022-01-11'
