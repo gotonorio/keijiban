@@ -21,8 +21,8 @@ from django.urls import include, path
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('bbs.urls')),
-    # path('keijiban', include('bbs.urls')),
-    path('register', include('register.urls')),
+    # path('keijiban/', include('bbs.urls')),
+    path('register/', include('register.urls')),
 ]
 
 # 開発環境で静的ファイルをアップロードするための追加設定。

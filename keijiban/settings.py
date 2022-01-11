@@ -129,6 +129,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # user setting
 # ------------------------------------------------------------------
 AUTH_USER_MODEL = 'register.User'
+# 写真サイズは2MB以下
+LIMMIT_IMAGE_SIZE = 2097152
 
 # ファイルアップロード用
 # https://qiita.com/okoppe8/items/86776b8df566a4513e96
@@ -137,7 +139,8 @@ MEDIA_URL = "/media/"
 
 LOGIN_URL = 'register:login'
 LOGIN_REDIRECT_URL = 'bbs:file_list'
-LOGOUT_REDIRECT_URL = 'register:login'
+# ログアウトメッセージ表示のため、コメントアウトする。
+# LOGOUT_REDIRECT_URL = 'bbs:list'
 
 # ブラウザを閉じたらログアウトさせる。
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True

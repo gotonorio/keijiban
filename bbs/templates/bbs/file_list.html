@@ -7,7 +7,7 @@
 {% block navbar %}
 <nav class="navbar is-fixed-top is-black is-size-6" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item">【掲示板】</a>
+    <a class="navbar-item" href="{% url 'bbs:list' %}">掲示板</a>
     {# ハンバーガアイコンのため以下の5行とbase.htmlでのjsスクリプトが必要 #}
     <a role="button" class="navbar-burger " aria-label="menu" aria-expanded="false" data-target="navbarMypage">
       <span aria-hidden="true"></span>
@@ -17,12 +17,13 @@
   </div>
   <div id="navbarMypage" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item" href="{% url 'bbs:list' %}">ファイル一覧</a>
-      {% comment %} <a class="navbar-item" href="{% url 'bbs:category_index' %}">カテゴリ一覧</a> {% endcomment %}
     </div>
-    {% comment %} <div class="navbar-end">
-      <a class="navbar-item" href="{% url 'register:news_card' %}">ホームに戻る</a>
-    </div> {% endcomment %}
+    <div class="navbar-end">
+      {% if user.is_superuser %}
+        <a class="navbar-item" href="{% url 'register:user_list' %}">ユーザ管理</a>
+      {% endif %}
+      <a class="navbar-item" href="{% url 'register:logout' %}">ログアウト</a>
+    </div>
   </div>
 </nav>
 {% endblock navbar %}
@@ -32,27 +33,16 @@
   <br>
   <div class="content">
     <h3>掲示板一覧</h3>
-{% comment %} 
-    {% if category_pk %}
-      <!-- カテゴリ一覧からカテゴリ別のファイル一覧で表示 -->
-      <a href="{% url 'bbs:file_create' category_pk %}" class="button is-primary">更新アップロード</a>
-    {% else %}
-      <a href="{% url 'bbs:file_create' %}" class="button is-primary">新規アップロード</a>
-    {% endif %}
-    <!--<a href="{% url 'notice:news_card' %}" class="button is-primary">戻る</a>-->
-    <a class="button is-primary" href="javascript:void(0);" onclick="window.history.back();">前に戻る</a>
-{% endcomment %}
+    <a href="{% url 'bbs:file_create' %}" class="button is-primary">新規アップロード</a>
+    <a class="button is-primary" href="javascript:void(0);" onclick="window.history.back();">戻る</a>
   </div>
   <br>
   <table class="table is-narrow is-bordered is-striped">
     <thead>
       <tr>
         <th class="has-text-centered">タイトル</th>
-        <th class="has-text-centered">カテゴリ</th>
-        <th class="has-text-centered">表示</th>
-        <th class="has-text-centered">状況</th>
-        <th class="has-text-centered">rank</th>
-        <th class="has-text-centered">#</th>
+        <th class="has-text-centered">画像</th>
+        <th class="has-text-centered">処理</th>
       </tr>
     </thead>
     <tbody>
@@ -60,11 +50,8 @@
       <tr>
         <td class="has-text-left">{{file.title}}</td>
         <td class="has-text-centered">
-          <img src="{{file.img.url}}" style="width: 100px; auto;">
+          <a href="{{file.img.url}}"><img src="{{file.img.url}}" style="width: 100px; auto;"></a>
         </td>
-        <td class="has-text-centered"><a href="{{file.img.url}}">表示</a></td>
-        <td class="has-text-centered">{{ file.alive }}</td>
-        <td class="has-text-centered">{{ file.rank }}</td>
         <td class="nowrap">
           <a href="{% url 'bbs:file_update' file.pk %}" class="button has-background-grey-lighter is-small">
             更新

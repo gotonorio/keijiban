@@ -2,6 +2,7 @@ from django.contrib.auth.models import AbstractUser, Group
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 from django.dispatch import receiver
+from django.http import Http404
 
 
 class User(AbstractUser):
@@ -20,14 +21,14 @@ class User(AbstractUser):
 
 @receiver(models.signals.post_save, sender=User)
 def post_save_user_signal_handler(sender, instance, created, **kwargs):
-    """ シグナルによってMyUserにgroupを追加する。
+    """ シグナルによってUserにgroupを追加する。
     https://stackoverflow.com/questions/51974276/how-to-automatically-add-group-and-staff-permissions-when-user-is-created/51975193
     """
     if created:
         try:
             group = Group.objects.get(name='guest')
         except ObjectDoesNotExist:
-            pass
+            raise Http404("guestグループが存在しません。管理者に連絡してください。")
         else:
             instance.groups.add(group)
             instance.save()

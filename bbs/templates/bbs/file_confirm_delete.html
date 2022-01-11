@@ -29,8 +29,8 @@
       <p>タイトル:{{ file.title }}</p>
       <p><img src="{{file.img.url}}" style="width: 500px; auto;"></p>
       <br>
-      <button type="submit" class="button is-danger">削除する</button>
-      <a class="button is-primary" href="javascript:void(0);" onclick="window.history.back();">戻る</a>
+      <button type="submit" class="button is-danger">Delete</button>
+      <a class="button is-link" href="javascript:void(0);" onclick="window.history.back();">Cancel</a>
     </div>
     {% csrf_token %}
   </form>
