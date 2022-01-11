@@ -4,7 +4,6 @@
 {% block navbar %}
 <nav class="navbar is-fixed-top is-black is-size-6" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item">ファイル管理</a>
     {# ハンバーガアイコンのため以下の5行とbase.htmlでのjsスクリプトが必要 #}
     <a role="button" class="navbar-burger " aria-label="menu" aria-expanded="false" data-target="navbarMypage">
       <span aria-hidden="true"></span>
@@ -15,10 +14,10 @@
   <div id="navbarMypage" class="navbar-menu">
     <div class="navbar-start">
       <a class="navbar-item" href="{% url 'bbs:list' %}">掲示板</a>
-      <a class="navbar-item" href="{% url 'bbs:file_list' %}">ファイル一覧</a>
+      {% comment %} <a class="navbar-item" href="{% url 'bbs:file_list' %}">ファイル一覧</a> {% endcomment %}
     </div>
     <div class="navbar-end">
-      <a class="navbar-item" href="javascript:void(0);" onclick="window.history.back();">戻る</a>
+      <a class="navbar-item" href="{% url 'bbs:file_list' %}" >戻る</a>
     </div>
   </div>
 </nav>
@@ -50,7 +49,8 @@
     <br>
     <div class='content has-text-centered my_button'>
       <button type="submit" class="button is-danger" value="send" name="action">送信する</button>
-      <a class="button is-link" href="javascript:void(0);" onclick="window.history.back();">戻る</a>
+      <a class="button is-link" href="{% url 'bbs:file_list' %}">戻る</a>
+      {% comment %} <a class="button is-link" href="javascript:void(0);" onclick="window.history.back();">戻る</a> {% endcomment %}
     </div>
   </form>
   <br>
