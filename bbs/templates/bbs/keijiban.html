@@ -37,17 +37,15 @@
   <div class="content has-text-centered">
     <h3>掲示板</h3>
     <br>
-    {% for file in file_list %}
-      <div class="tile is-ancestor">
-        <div class="tile is-parent">
-          <div class="tile is-child box">
+    <div class="tile is-ancestor">
+      <div class="tile is-parent">
+        {% for file in file_list %}
+          <div class="tile is-child box is-4">
             <a href="{{file.img.url}}"><img src="{{file.img.url}}" style="width: 300px; auto;"></a>
-            <br>
-            {{file.title}}
           </div>
-        </div>
+        {% endfor %}
       </div>
-    {% endfor %}
+    </div>
     <br>
   </div>
 </div>
