@@ -59,6 +59,9 @@ class FileRotateView(PermissionRequiredMixin, generic.TemplateView):
     template_name = "bbs/file_rotate.html"
 
     def get_context_data(self, **kwargs):
+        """ iPhoneで写真が横向きになるため、修正の処理。
+        https://docs.djangoproject.com/ja/4.0/topics/files/
+        """
         context = super().get_context_data(**kwargs)
         pk = self.kwargs['pk']
         # imageのurlを求める
