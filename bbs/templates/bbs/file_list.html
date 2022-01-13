@@ -7,7 +7,6 @@
 {% block navbar %}
 <nav class="navbar is-fixed-top is-black is-size-6" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" href="{% url 'bbs:list' %}">掲示板</a>
     {# ハンバーガアイコンのため以下の5行とbase.htmlでのjsスクリプトが必要 #}
     <a role="button" class="navbar-burger " aria-label="menu" aria-expanded="false" data-target="navbarMypage">
       <span aria-hidden="true"></span>
@@ -17,6 +16,7 @@
   </div>
   <div id="navbarMypage" class="navbar-menu">
     <div class="navbar-start">
+      <a class="navbar-item" href="{% url 'bbs:list' %}">掲示板</a>
       <a class="navbar-item" href="{% url 'bbs:file_create' %}" >新規登録</a>
     </div>
     <div class="navbar-end">
@@ -60,8 +60,11 @@
           <a href="{% url 'bbs:file_delete' file.pk %}" class="button has-background-grey-lighter is-small">
             削除
           </a>
-          <a href="{% url 'bbs:file_rotate' file.pk %}" class="button has-background-grey-lighter is-small">
-            回転
+          <a href="{% url 'bbs:file_rotate' file.pk 1 %}" class="button has-background-grey-lighter is-small">
+            右回転
+          </a>
+          <a href="{% url 'bbs:file_rotate' file.pk 0 %}" class="button has-background-grey-lighter is-small">
+            左回転
           </a>
         </td>
       </tr>

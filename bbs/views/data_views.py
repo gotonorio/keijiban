@@ -53,22 +53,25 @@ class FileListView(PermissionRequiredMixin, generic.ListView):
 
 class FileRotateView(PermissionRequiredMixin, generic.TemplateView):
     """ 写真の回転処理
+    iPhoneで写真が横向きになるため、修正の処理。
     イメージを読み込んで、時計回りに90度回転して保存する。
+    https://docs.djangoproject.com/ja/4.0/topics/files/
     """
     permission_required = ("bbs.add_file")
     template_name = "bbs/file_rotate.html"
 
     def get_context_data(self, **kwargs):
-        """ iPhoneで写真が横向きになるため、修正の処理。
-        https://docs.djangoproject.com/ja/4.0/topics/files/
-        """
         context = super().get_context_data(**kwargs)
         pk = self.kwargs['pk']
-        # imageのurlを求める
+        direc = self.kwargs['direc']
+        # imageをpillowで読み込み、回転、保存する。
         qs = File.objects.get(pk=pk)
         img_path = qs.img.path
         img = Image.open(img_path)
-        img_rotate = img.rotate(-90, expand=True)
+        if direc == 1:
+            img_rotate = img.rotate(-90, expand=True)
+        elif direc == 0:
+            img_rotate = img.rotate(90, expand=True)
         img_rotate.save(img_path)
         qs = File.objects.get(pk=pk)
         context['img'] = qs.img.url

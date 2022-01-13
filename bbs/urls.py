@@ -12,5 +12,5 @@ urlpatterns = [
     path('file/create/', data_views.FileCreateView.as_view(), name='file_create'),
     path('file/update/<int:pk>', data_views.FileUpdateView.as_view(), name='file_update'),
     path('file/delete/<int:pk>', data_views.FileDeleteView.as_view(), name='file_delete'),
-    path('file/<int:pk>', data_views.FileRotateView.as_view(), name='file_rotate'),
+    path('file/<int:pk> <int:direc>', data_views.FileRotateView.as_view(), name='file_rotate'),
 ]
