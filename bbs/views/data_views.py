@@ -63,12 +63,10 @@ class FileRotateView(PermissionRequiredMixin, generic.TemplateView):
         pk = self.kwargs['pk']
         # imageのurlを求める
         qs = File.objects.get(pk=pk)
-        img_url = qs.img.url
-        # ToDo:行頭の/が余計？行頭の1文字を削除すると問題ないようだ。
-        img_url = img_url[1:]
-        img = Image.open(img_url)
+        img_path = qs.img.path
+        img = Image.open(img_path)
         img_rotate = img.rotate(-90, expand=True)
-        img_rotate.save(img_url)
+        img_rotate.save(img_path)
         qs = File.objects.get(pk=pk)
         context['img'] = qs.img.url
         return context
