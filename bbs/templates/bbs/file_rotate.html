@@ -7,7 +7,6 @@
 {% block navbar %}
 <nav class="navbar is-fixed-top is-black is-size-6" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" href="{% url 'bbs:list' %}">編集</a>
     {# ハンバーガアイコンのため以下の5行とbase.htmlでのjsスクリプトが必要 #}
     <a role="button" class="navbar-burger " aria-label="menu" aria-expanded="false" data-target="navbarMypage">
       <span aria-hidden="true"></span>
@@ -28,8 +27,9 @@
 <div class="container">
   <br>
   <div class="content has-text-centered">
-    <h3>画像回転</h3>
-    <a href="{% url 'bbs:file_list' %}">掲示板へ戻る</a>
+    <div class="is-size-5 has-text-weight-bold">
+      <a href="{% url 'bbs:file_list' %}">管理画面へ戻る</a>
+    </div>
   </div>
   <br>
   <div class="has-text-centered">

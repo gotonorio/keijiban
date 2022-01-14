@@ -41,7 +41,7 @@
   <table class="table is-narrow is-bordered is-striped">
     <thead>
       <tr>
-        <th class="has-text-centered">タイトル</th>
+        {% comment %} <th class="has-text-centered">タイトル</th> {% endcomment %}
         <th class="has-text-centered">画像</th>
         <th class="has-text-centered">処理</th>
       </tr>
@@ -49,9 +49,10 @@
     <tbody>
       {% for file in file_list %}
       <tr>
-        <td class="has-text-left">{{file.title}}</td>
+        {% comment %} <td class="has-text-left">{{file.title}}</td> {% endcomment %}
         <td class="has-text-centered">
-          <a href="{{file.img.url}}"><img src="{{file.img.url}}" style="width: 100px; auto;"></a>
+          {% comment %} <a href="{{file.img.url}}"><img src="{{file.img.url}}" style="width: 100px; auto;"></a> {% endcomment %}
+          <img src="{{file.img.url}}" style="width: 200px; auto;">
         </td>
         <td class="nowrap">
           <a href="{% url 'bbs:file_update' file.pk %}" class="button has-background-grey-lighter is-small">

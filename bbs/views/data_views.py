@@ -69,7 +69,7 @@ class FileRotateView(PermissionRequiredMixin, generic.TemplateView):
         img_path = qs.img.path
         img = Image.open(img_path)
         if direc == 1:
-            img_rotate = img.rotate(-90, expand=True)
+            img_rotate = img.rotate(270, expand=True)
         elif direc == 0:
             img_rotate = img.rotate(90, expand=True)
         img_rotate.save(img_path)

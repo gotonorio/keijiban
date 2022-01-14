@@ -7,7 +7,6 @@
 {% block navbar %}
 <nav class="navbar is-fixed-top is-black" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    {% comment %} <a class="navbar-item">【掲示板】</a> {% endcomment %}
     {# ハンバーガアイコンのため以下の5行とbase.htmlでのjsスクリプトが必要 #}
     <a role="button" class="navbar-burger " aria-label="menu" aria-expanded="false" data-target="navbarMypage">
       <span aria-hidden="true"></span>
@@ -19,12 +18,7 @@
     <div class="navbar-start">
     </div>
     <div class="navbar-end">
-      {% if user.is_anonymous %}
-        <a class="navbar-item" href="{% url 'register:login' %}">管理者ログイン</a>
-      {% else %}
-        <a class="navbar-item" href="{% url 'bbs:file_list' %}">管理画面</a>
-        <a class="navbar-item" href="{% url 'register:logout' %}">ログアウト</a>
-      {% endif %}
+        <a class="navbar-item" href="{% url 'bbs:list' %}">戻る</a>
     </div>
   </div>
 </nav>
@@ -35,18 +29,8 @@
 <div class="container is-fluid">
   <br>
   <div class="content has-text-centered">
-    <h3>掲示板</h3>
     <br>
-    <div class="tile is-ancestor">
-      <div class="tile is-parent">
-        {% for file in file_list %}
-          <div class="tile is-child box is-4">
-            {% comment %} <a href="{{file.img.url}}"><img src="{{file.img.url}}" style="width: 300px; auto;"></a> {% endcomment %}
-            <a href="{% url 'bbs:file_expand' file.pk %}"><img src="{{file.img.url}}" style="width: 300px; auto;"></a>
-          </div>
-        {% endfor %}
-      </div>
-    </div>
+    <img src="{{img_obj.img.url}}" >
     <br>
   </div>
 </div>
