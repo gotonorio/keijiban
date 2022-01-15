@@ -1,8 +1,17 @@
 {% extends "base.html" %}
+{% comment %} {% load static %} {% endcomment %}
 
 {% block title %}
   掲示板
 {% endblock %}
+
+{% block head %}
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Expires" content="0">
+{% comment %} <script src="{% static 'bbs/reload.js' %}"></script> {% endcomment %}
+{% endblock %}
+
 <!-- navbar -->
 {% block navbar %}
 <nav class="navbar is-fixed-top is-black" role="navigation" aria-label="main navigation">
@@ -37,16 +46,15 @@
   <div class="content has-text-centered">
     <h3>掲示板</h3>
     <br>
-    <div class="tile is-ancestor">
-      <div class="tile is-parent">
+    {% comment %} <div class="tile is-ancestor">
+      <div class="tile is-parent"> {% endcomment %}
         {% for file in file_list %}
-          <div class="tile is-child box is-4">
-            {% comment %} <a href="{{file.img.url}}"><img src="{{file.img.url}}" style="width: 300px; auto;"></a> {% endcomment %}
+          {% comment %} <div class="tile is-child box is-4"> {% endcomment %}
             <a href="{% url 'bbs:file_expand' file.pk %}"><img src="{{file.img.url}}" style="width: 300px; auto;"></a>
-          </div>
+          {% comment %} </div> {% endcomment %}
         {% endfor %}
-      </div>
-    </div>
+      {% comment %} </div>
+    </div> {% endcomment %}
     <br>
   </div>
 </div>

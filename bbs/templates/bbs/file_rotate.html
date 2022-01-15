@@ -1,8 +1,17 @@
 {% extends "base.html" %}
+{% comment %} {% load static %} {% endcomment %}
 
 {% block title %}
   画像回転
 {% endblock %}
+
+{% block head %}
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Expires" content="0">
+{% comment %} <script src="{% static 'bbs/reload.js' %}"></script> {% endcomment %}
+{% endblock %}
+
 <!-- navbar -->
 {% block navbar %}
 <nav class="navbar is-fixed-top is-black is-size-6" role="navigation" aria-label="main navigation">
@@ -35,5 +44,9 @@
   <div class="has-text-centered">
     <img src="{{img}}" style="width: 300px; auto;">
   </div>
+{% comment %} 
+  <script type="text/javascript">
+  </script>
+{% endcomment %}
 </div>
 {% endblock %}

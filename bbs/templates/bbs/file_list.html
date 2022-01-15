@@ -61,11 +61,11 @@
           <a href="{% url 'bbs:file_delete' file.pk %}" class="button has-background-grey-lighter is-small">
             削除
           </a>
-          <a href="{% url 'bbs:file_rotate' file.pk 1 %}" class="button has-background-grey-lighter is-small">
-            右回転
-          </a>
           <a href="{% url 'bbs:file_rotate' file.pk 0 %}" class="button has-background-grey-lighter is-small">
             左回転
+          </a>
+          <a href="{% url 'bbs:file_rotate' file.pk 1 %}" class="button has-background-grey-lighter is-small">
+            右回転
           </a>
         </td>
       </tr>
