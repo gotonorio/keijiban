@@ -1,9 +1,12 @@
 import os
 
 from django.conf import settings
+from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils import timezone
+
+user = get_user_model()
 
 
 def get_upload_to(instance, filename):
@@ -35,6 +38,7 @@ class File(models.Model):
     img = models.ImageField(verbose_name='写真ファイル', upload_to=get_upload_to,
                             validators=[image_size], null=True, blank=True)
     rank = models.IntegerField(verbose_name='表示順', default=0)
+    user = models.ForeignKey(user, verbose_name='名前', on_delete=models.CASCADE)
     created_at = models.DateTimeField(verbose_name='作成日', default=timezone.now)
     alive = models.BooleanField(verbose_name='有効', default=True)
 

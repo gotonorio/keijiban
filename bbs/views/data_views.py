@@ -16,6 +16,15 @@ class FileCreateView(PermissionRequiredMixin, generic.CreateView):
     raise_exception = True
     success_url = reverse_lazy('bbs:file_list')
 
+    def form_valid(self, form):
+        # commitを停止する。
+        self.object = form.save(commit=False)
+        # userをセット。
+        self.object.user = self.request.user
+        # データを保存。
+        self.object.save()
+        return super().form_valid(form)
+
 
 class FileUpdateView(PermissionRequiredMixin, generic.UpdateView):
     """ 管理者用 ファイルの更新. """
@@ -26,6 +35,15 @@ class FileUpdateView(PermissionRequiredMixin, generic.UpdateView):
     # 権限がない場合、Forbidden 403を返す。これがない場合はログイン画面に飛ばす。
     raise_exception = True
     success_url = reverse_lazy('bbs:file_list')
+
+    def form_valid(self, form):
+        # commitを停止する。
+        self.object = form.save(commit=False)
+        # userをセット。
+        self.object.user = self.request.user
+        # データを保存。
+        self.object.save()
+        return super().form_valid(form)
 
 
 class FileDeleteView(PermissionRequiredMixin, generic.DeleteView):
