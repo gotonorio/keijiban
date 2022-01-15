@@ -46,15 +46,9 @@
   <div class="content has-text-centered">
     <h3>掲示板</h3>
     <br>
-    {% comment %} <div class="tile is-ancestor">
-      <div class="tile is-parent"> {% endcomment %}
-        {% for file in file_list %}
-          {% comment %} <div class="tile is-child box is-4"> {% endcomment %}
-            <a href="{% url 'bbs:file_expand' file.pk %}"><img src="{{file.img.url}}" style="width: 300px; auto;"></a>
-          {% comment %} </div> {% endcomment %}
-        {% endfor %}
-      {% comment %} </div>
-    </div> {% endcomment %}
+    {% for file in file_list %}
+      <a href="{% url 'bbs:file_expand' file.pk %}"><img src="{{file.img.url}}" style="width: 300px; auto;"></a>
+    {% endfor %}
     <br>
   </div>
 </div>
