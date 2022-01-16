@@ -19,9 +19,7 @@ class KeijibanView(generic.ListView):
         """ 最新の日付データをタイトルとして表示する """
         context = super().get_context_data(**kwargs)
         qs = File.objects.filter(alive=True).aggregate(Max('created_at'))
-        tz = qs['created_at__max'] 
-        logging.debug(tz)
-        context["title"] = tz
+        context["title"] = qs['created_at__max']
         return context
     
 
