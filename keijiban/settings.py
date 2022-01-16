@@ -133,7 +133,7 @@ VERSION_NO = '1.0.0 β 2022-01-16'
 AUTH_USER_MODEL = 'register.User'
 # 写真サイズは5MB以下
 LIMMIT_IMAGE_SIZE = 5242880
-CSRF_TRUSTED_ORIGINS = ['https://keijiban.sophiagardens.org']
+CSRF_TRUSTED_ORIGINS = ['https://*.sophiagardens.org']
 
 # ファイルアップロード用
 # https://qiita.com/okoppe8/items/86776b8df566a4513e96
