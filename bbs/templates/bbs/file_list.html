@@ -32,13 +32,11 @@
 {% block content %}
 <div class="container with_mobile">
   <br>
-  <div class="content">
+  <div class="content has-text-centered">
     <h3>掲示板一覧</h3>
-    {% comment %} <a href="{% url 'bbs:file_create' %}" class="button is-primary">新規アップロード</a>
-    <a class="button is-primary" href="javascript:void(0);" onclick="window.history.back();">戻る</a> {% endcomment %}
   </div>
   <br>
-  <table class="table is-narrow is-bordered is-striped">
+  <table class="table table_center_nowrap is-narrow is-striped">
     <thead>
       <tr>
         {% comment %} <th class="has-text-centered">タイトル</th> {% endcomment %}
@@ -51,7 +49,6 @@
       <tr>
         {% comment %} <td class="has-text-left">{{file.title}}</td> {% endcomment %}
         <td class="has-text-centered">
-          {% comment %} <a href="{{file.img.url}}"><img src="{{file.img.url}}" style="width: 100px; auto;"></a> {% endcomment %}
           <img src="{{file.img.url}}" style="width: 200px; auto;">
         </td>
         <td class="nowrap">
