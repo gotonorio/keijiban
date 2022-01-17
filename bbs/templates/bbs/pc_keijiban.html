@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+  掲示板
+{% endblock %}
+
+{% block head %}
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Expires" content="0">
+{% comment %} <script src="{% static 'bbs/reload.js' %}"></script> {% endcomment %}
+<link href="{% static 'bbs/img.css' %}" rel="stylesheet">
+{% endblock %}
+
+<!-- navbar -->
+{% block navbar %}
+<nav class="navbar is-fixed-top is-black" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    {% comment %} <a class="navbar-item">【掲示板】</a> {% endcomment %}
+    {# ハンバーガアイコンのため以下の5行とbase.htmlでのjsスクリプトが必要 #}
+    <a role="button" class="navbar-burger " aria-label="menu" aria-expanded="false" data-target="navbarMypage">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div id="navbarMypage" class="navbar-menu">
+    <div class="navbar-start">
+    </div>
+    <div class="navbar-end">
+      {% if user.is_anonymous %}
+        <a class="navbar-item" href="{% url 'register:login' %}">管理者ログイン</a>
+      {% else %}
+        <a class="navbar-item" href="{% url 'bbs:file_list' %}">管理画面</a>
+        <a class="navbar-item" href="{% url 'register:logout' %}">ログアウト</a>
+      {% endif %}
+    </div>
+  </div>
+</nav>
+{% endblock navbar %}
+
+{% block content %}
+{% comment %} <div class="container with_mobile"> {% endcomment %}
+<div class="container is-fluid">
+  <br>
+  <div class="content has-text-centered">
+    <h3>掲示板 ({{title|date}})</h3>
+    <br>
+    {% for file in file_list %}
+      <a href="{% url 'bbs:file_expand' file.pk %}"><img src="{{file.img.url}}" style="width: 300px; auto;"></a>
+    {% endfor %}
+    <br>
+  </div>
+</div>
+{% endblock %}

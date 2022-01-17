@@ -10,6 +10,20 @@ class KeijibanView(generic.ListView):
     model = File
     template_name = "bbs/keijiban.html"
 
+    def get_template_names(self):
+        """ templateファイルを切り替える """
+        if self.request.user_agent_flag == 'mobile':
+            template_name = "bbs/mobile_keijiban.html"
+        else:
+            template_name = "bbs/pc_keijiban.html"
+        # if self.request.user.is_superuser:
+        #     template_name = 'bbs/template_superuser.html'
+        # elif self.request.user.is_authenticated:
+        #     template_name = 'bbs/template_authenticated.html'
+        # else:
+        #     template_name = self.template_name
+        return [template_name]
+
     def get_queryset(self, **kwargs):
         qs = super().get_queryset(**kwargs)
         qs = qs.filter(alive=True).order_by('created_at')
@@ -21,7 +35,7 @@ class KeijibanView(generic.ListView):
         qs = File.objects.filter(alive=True).aggregate(Max('created_at'))
         context["title"] = qs['created_at__max']
         return context
-    
+
 
 def expandView(request, pk):
     """ 拡大イメージを表示
