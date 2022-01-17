@@ -1,6 +1,12 @@
-img {
+img.cover {
     width: 250px;
     height: 250px;
     object-fit: cover;
   }
+img.contain {
+    width: 250px;
+    height: 250px;
+    object-fit: contain;
+  }
+  
   

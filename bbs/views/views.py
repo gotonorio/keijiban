@@ -1,11 +1,11 @@
+from bbs.forms import SwitchCSSForm
 from bbs.models import File
+from django.db.models.aggregates import Max
 from django.shortcuts import render
 from django.views import generic
-from django.db.models.aggregates import Max
-import logging
 
 
-class KeijibanView(generic.ListView):
+class KeijibanView(generic.TemplateView):
     """ 掲示板表示 """
     model = File
     template_name = "bbs/keijiban.html"
@@ -24,16 +24,22 @@ class KeijibanView(generic.ListView):
         #     template_name = self.template_name
         return [template_name]
 
-    def get_queryset(self, **kwargs):
-        qs = super().get_queryset(**kwargs)
-        qs = qs.filter(alive=True).order_by('created_at')
-        return qs
-
     def get_context_data(self, **kwargs):
         """ 最新の日付データをタイトルとして表示する """
         context = super().get_context_data(**kwargs)
-        qs = File.objects.filter(alive=True).aggregate(Max('created_at'))
-        context["title"] = qs['created_at__max']
+        css = self.request.GET.get('css', 'cover')
+        qs = File.objects.filter(alive=True).order_by('created_at')
+        max_date = File.objects.filter(alive=True).aggregate(Max('created_at'))
+
+        # formフィールドに初期値を設定。
+        selectcssform = SwitchCSSForm(initial={
+            'css': css,
+        })
+
+        context["title"] = max_date['created_at__max']
+        context['file_list'] = qs
+        context['form'] = selectcssform
+        context['css'] = css
         return context
 
 

@@ -3,6 +3,12 @@ from django import forms
 from bbs.models import File
 
 
+CSS_CHOICES = (
+    ('cover', '等サイズ'),
+    ('contain', '全体表示'),
+)
+
+
 class FileForm(forms.ModelForm):
     """ Fileモデルのフォーム
     ModelForm限定の方法としてclass Metaでwidgetを設定する。class以外も変更できる。
@@ -33,3 +39,13 @@ class FileForm(forms.ModelForm):
                 'class': "select-css",
             }),
         }
+
+
+class SwitchCSSForm(forms.Form):
+    """ 掲示板のcssを切り替えるためのform """
+    css = forms.ChoiceField(
+        label='CSS',
+        widget=forms.Select(attrs={'class': 'select-css'}),
+        choices=CSS_CHOICES,
+        required=True,
+    )

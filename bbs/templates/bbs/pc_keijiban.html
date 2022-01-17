@@ -27,6 +27,10 @@
   </div>
   <div id="navbarMypage" class="navbar-menu">
     <div class="navbar-start">
+      <form class="navbar-item" action="" method="get">
+        {{form.css}}
+        <button type="submit" class="button is-primary is-size-7">切替</button>
+      </form>
     </div>
     <div class="navbar-end">
       {% if user.is_anonymous %}
@@ -48,7 +52,9 @@
     <h3>掲示板 ({{title|date}})</h3>
     <br>
     {% for file in file_list %}
-      <a href="{% url 'bbs:file_expand' file.pk %}"><img src="{{file.img.url}}" style="width: 300px; auto;"></a>
+      <a href="{% url 'bbs:file_expand' file.pk %}">
+        <img class="{{css}}" src="{{file.img.url}}" style="width: 300px; auto;">
+      </a>
     {% endfor %}
     <br>
   </div>
