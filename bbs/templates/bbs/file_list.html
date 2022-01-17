@@ -20,7 +20,7 @@
       <a class="navbar-item" href="{% url 'bbs:file_create' %}" >新規登録</a>
     </div>
     <div class="navbar-end">
-      {% if user.is_superuser %}
+      {% if perms.register.add_user %}
         <a class="navbar-item" href="{% url 'register:user_list' %}">ユーザ管理</a>
       {% endif %}
       <a class="navbar-item" href="{% url 'register:logout' %}">ログアウト</a>
@@ -30,13 +30,14 @@
 {% endblock navbar %}
 
 {% block content %}
-<div class="container with_mobile">
+<div class="container is-fluid">
   <br>
   <div class="content has-text-centered">
     <h3>掲示板一覧</h3>
   </div>
   <br>
-  <table class="table table_center_nowrap is-narrow is-striped">
+  {% comment %} <table class="table table_center_nowrap is-narrow is-striped"> {% endcomment %}
+  <table class="table table_center is-narrow is-striped">
     <thead>
       <tr>
         {% comment %} <th class="has-text-centered">タイトル</th> {% endcomment %}
@@ -51,7 +52,8 @@
         <td class="has-text-centered">
           <img src="{{file.img.url}}" style="width: 200px; auto;">
         </td>
-        <td class="nowrap">
+        {% comment %} <td class="nowrap"> {% endcomment %}
+        <td>
           <a href="{% url 'bbs:file_update' file.pk %}" class="button has-background-grey-lighter is-small">
             更新
           </a>

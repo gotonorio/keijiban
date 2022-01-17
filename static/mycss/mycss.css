@@ -191,3 +191,8 @@ div.my_field > textarea {
   margin: 3px auto;
   white-space: nowrap;
 }
+/* tableの中央配置 */
+.table_center {
+  width: auto;
+  margin: 3px auto;
+}
