@@ -44,7 +44,7 @@
 <div class="container is-fluid">
   <br>
   <div class="content has-text-centered">
-    <h3>掲示板 ({{title|date}})</h3>
+    <h4>掲示板 ({{title|date}})</h4>
     <br>
     {% for file in file_list %}
       <a href="{% url 'bbs:file_expand' file.pk %}"><img src="{{file.img.url}}" style="width: 300px; auto;"></a>
