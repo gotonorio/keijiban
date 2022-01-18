@@ -73,7 +73,7 @@ class UserPasswordUpdate(OnlyYouMixin, PasswordChangeView):
 
     def get_success_url(self):
         # return resolve_url('register:pwd_update', pk=self.kwargs['pk'])
-        return resolve_url('register:mypage')
+        return resolve_url('bbs:file_list')
 
 
 class UserManagementView(PermissionRequiredMixin, generic.UpdateView):

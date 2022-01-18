@@ -130,7 +130,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # ------------------------------------------------------------------
 # user setting
 # ------------------------------------------------------------------
-VERSION_NO = '1.0.0 β 2022-01-16'
+VERSION_NO = '0.9.0 β 2022-01-18'
 AUTH_USER_MODEL = 'register.User'
 # 写真サイズは5MB以下
 LIMMIT_IMAGE_SIZE = 5242880
