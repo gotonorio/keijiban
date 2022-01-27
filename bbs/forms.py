@@ -25,8 +25,7 @@ class FileForm(forms.ModelForm):
             'summary': forms.TextInput(attrs={
                 'class': "input",
             }),
-            'img': forms.ClearableFileInput(attrs={
-                # 'class': "file",
+            'img': forms.FileInput(attrs={
                 'class': "input",
             }),
             'rank': forms.TextInput(attrs={
