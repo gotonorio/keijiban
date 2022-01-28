@@ -28,7 +28,7 @@ class KeijibanView(generic.TemplateView):
         """ 最新の日付データをタイトルとして表示する """
         context = super().get_context_data(**kwargs)
         css = self.request.GET.get('css', 'cover')
-        qs = File.objects.filter(alive=True).order_by('created_at')
+        qs = File.objects.filter(alive=True).order_by('-created_at')
         max_date = File.objects.filter(alive=True).aggregate(Max('created_at'))
 
         # formフィールドに初期値を設定。

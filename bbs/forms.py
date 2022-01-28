@@ -31,7 +31,7 @@ class FileForm(forms.ModelForm):
             'rank': forms.TextInput(attrs={
                 'class': "input",
             }),
-            'created_at': forms.DateInput(attrs={
+            'created_at': forms.DateTimeInput(attrs={
                 'class': 'input',
             }),
             'alive': forms.NullBooleanSelect(attrs={

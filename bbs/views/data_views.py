@@ -65,7 +65,7 @@ class FileListView(PermissionRequiredMixin, generic.ListView):
 
     def get_queryset(self, **kwargs):
         qs = super().get_queryset(**kwargs)
-        qs = qs.filter(alive=True).order_by('created_at')
+        qs = qs.filter(alive=True).order_by('-created_at')
         return qs
 
 
