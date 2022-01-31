@@ -10,13 +10,15 @@ CSS_CHOICES = (
 
 
 class FileForm(forms.ModelForm):
-    """ Fileモデルのフォーム
+    """ 
+    (1) 不要な画像ファイルは削除することとして、alive要素は封印する。
+    (2) 表示順は新しい画像優先とするため、rank要素は封印する。
     ModelForm限定の方法としてclass Metaでwidgetを設定する。class以外も変更できる。
     https://narito.ninja/blog/detail/52/
     """
     class Meta:
         model = File
-        fields = ("title", "summary", "img", "rank", "created_at", "alive")
+        fields = ("title", "summary", "img", "created_at")
         # field毎に異なるclassを設定する場合には、この方法を取る。
         widgets = {
             'title': forms.TextInput(attrs={
@@ -28,15 +30,15 @@ class FileForm(forms.ModelForm):
             'img': forms.FileInput(attrs={
                 'class': "input",
             }),
-            'rank': forms.TextInput(attrs={
-                'class': "input",
-            }),
             'created_at': forms.DateTimeInput(attrs={
                 'class': 'input',
             }),
-            'alive': forms.NullBooleanSelect(attrs={
-                'class': "select-css",
-            }),
+            # 'alive': forms.NullBooleanSelect(attrs={
+            #     'class': "select-css",
+            # }),
+            # 'rank': forms.TextInput(attrs={
+            #     'class': "input",
+            # }),
         }
 
 

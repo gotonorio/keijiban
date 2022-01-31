@@ -12,12 +12,9 @@
 {% comment %} <script src="{% static 'bbs/reload.js' %}"></script> {% endcomment %}
 {% endblock %}
 
-<!-- navbar -->
 {% block navbar %}
 <nav class="navbar is-fixed-top is-black" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    {% comment %} <a class="navbar-item">【掲示板】</a> {% endcomment %}
-    {# ハンバーガアイコンのため以下の5行とbase.htmlでのjsスクリプトが必要 #}
     <a role="button" class="navbar-burger " aria-label="menu" aria-expanded="false" data-target="navbarMypage">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
@@ -41,7 +38,7 @@
 
 {% block content %}
 {% comment %} <div class="container with_mobile"> {% endcomment %}
-<div class="container is-fluid">
+<div class="container">
   <br>
   <div class="content has-text-centered">
     <h4>掲示板 ({{title|date}})</h4>

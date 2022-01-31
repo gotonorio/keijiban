@@ -24,13 +24,16 @@
 {% block content %}
 <div class="container">
   <br>
+  <div class="content has-text-centered has-text-danger is-size-4">
+    以下の画像を削除しますか？
+  </div>
   <form action="" method="POST" enctype='multipart/form-data'>
     <div class="content has-text-centered">
       <p>{{file.title}}</p>
       <p><img src="{{file.img.url}}" style="width: 300px; auto;"></p>
       <br>
-      <button type="submit" class="button is-danger">Delete</button>
-      <a class="button is-link" href="javascript:void(0);" onclick="window.history.back();">Cancel</a>
+      <button type="submit" class="button is-danger">削除する</button>
+      <a class="button is-link" href="javascript:void(0);" onclick="window.history.back();">戻る</a>
     </div>
     {% csrf_token %}
   </form>

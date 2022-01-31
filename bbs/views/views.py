@@ -25,7 +25,7 @@ class KeijibanView(generic.TemplateView):
         return [template_name]
 
     def get_context_data(self, **kwargs):
-        """ 最新の日付データをタイトルとして表示する """
+        """ 有効な画像を表示する """
         context = super().get_context_data(**kwargs)
         css = self.request.GET.get('css', 'cover')
         qs = File.objects.filter(alive=True).order_by('-created_at')
@@ -35,7 +35,7 @@ class KeijibanView(generic.TemplateView):
         selectcssform = SwitchCSSForm(initial={
             'css': css,
         })
-
+        # 最新の画像データ登録日をタイトル表示させる。
         context["title"] = max_date['created_at__max']
         context['file_list'] = qs
         context['form'] = selectcssform

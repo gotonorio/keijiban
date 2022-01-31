@@ -58,14 +58,14 @@ class FileDeleteView(PermissionRequiredMixin, generic.DeleteView):
 
 
 class FileListView(PermissionRequiredMixin, generic.ListView):
-    """ 掲示板list一覧 """
+    """ 管理者用の画像list一覧 """
     model = File
-    template_name = "bbs/file_list.html"
+    template_name = "bbs/management_list.html"
     permission_required = ("bbs.add_file")
 
     def get_queryset(self, **kwargs):
         qs = super().get_queryset(**kwargs)
-        qs = qs.filter(alive=True).order_by('-created_at')
+        qs = qs.order_by('-created_at')
         return qs
 
 
