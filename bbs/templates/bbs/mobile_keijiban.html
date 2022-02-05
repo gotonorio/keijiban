@@ -43,9 +43,13 @@
   <div class="content has-text-centered">
     <h4>掲示板 ({{title|date}})</h4>
     <br>
-    {% for file in file_list %}
-      <a href="{% url 'bbs:file_expand' file.pk %}"><img src="{{file.img.url}}" style="width: 300px; auto;"></a>
-    {% endfor %}
+    <div class="columns">
+      <div class="column">
+        {% for file in file_list %}
+          <a href="{% url 'bbs:file_expand' file.pk %}"><img src="{{file.img.url}}" style="width: 95%; auto;"></a>
+        {% endfor %}
+      </div>
+    </div>
     <br>
   </div>
 </div>
