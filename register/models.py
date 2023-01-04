@@ -2,7 +2,7 @@ from django.contrib.auth.models import AbstractUser, Group
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 from django.dispatch import receiver
-from django.http import Http404
+# from django.http import Http404
 
 
 class User(AbstractUser):

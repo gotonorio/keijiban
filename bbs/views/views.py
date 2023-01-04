@@ -13,9 +13,9 @@ class KeijibanView(generic.TemplateView):
     def get_template_names(self):
         """ templateファイルを切り替える """
         if self.request.user_agent_flag == 'mobile':
-            template_name = "bbs/mobile_keijiban.html"
+            template_name = "bbs/keijiban_mobile.html"
         else:
-            template_name = "bbs/pc_keijiban.html"
+            template_name = "bbs/keijiban_pc.html"
         # if self.request.user.is_superuser:
         #     template_name = 'bbs/template_superuser.html'
         # elif self.request.user.is_authenticated:
