@@ -139,8 +139,11 @@ CSRF_TRUSTED_ORIGINS = ['https://*.sophiagardens.org']
 
 # ファイルアップロード用
 # https://qiita.com/okoppe8/items/86776b8df566a4513e96
+# アップロードファイルなどを読み込む際のフォルダの場所を記述
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# サービス内でmediaフォルダのURLパスを設定
 MEDIA_URL = "/media/"
+# 掲示板用にディレクトリを設定する。
 IMAGE_PATH = "keijiban"
 
 LOGIN_URL = 'register:login'

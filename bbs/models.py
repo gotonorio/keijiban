@@ -13,7 +13,7 @@ def get_upload_to(instance, filename):
     """ upload_toを動的(カテゴリのpath毎)に指定する
     https://docs.djangoproject.com/ja/4.0/ref/models/fields/
     ここで、ファイルをuploadするパスを設定する。
-    media/カテゴリのpath/filename
+    settings.pyで設定したMEDIA_ROOT + IMAGE_PATH + filenameとなる。
     """
     try:
         path = os.path.join(settings.IMAGE_PATH, filename)
