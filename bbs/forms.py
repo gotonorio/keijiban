@@ -4,8 +4,8 @@ from bbs.models import File
 
 
 CSS_CHOICES = (
-    ('cover', '等サイズ'),
     ('contain', '全体表示'),
+    ('cover', '等サイズ'),
 )
 
 

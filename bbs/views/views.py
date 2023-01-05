@@ -27,7 +27,7 @@ class KeijibanView(generic.TemplateView):
     def get_context_data(self, **kwargs):
         """ 有効な画像を表示する """
         context = super().get_context_data(**kwargs)
-        css = self.request.GET.get('css', 'cover')
+        css = self.request.GET.get('css', 'contain')
         qs = File.objects.filter(alive=True).order_by('-created_at')
         max_date = File.objects.filter(alive=True).aggregate(Max('created_at'))
 
