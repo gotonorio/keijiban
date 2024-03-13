@@ -37,7 +37,10 @@
         <a class="navbar-item" href="{% url 'register:login' %}">管理者ログイン</a>
       {% else %}
         <a class="navbar-item" href="{% url 'bbs:file_list' %}">管理画面</a>
-        <a class="navbar-item" href="{% url 'register:logout' %}">ログアウト</a>
+        <form method="post" class="navbar-item" action="{% url 'register:logout' %}">
+          {% csrf_token %}
+          <button type="submit">ログアウト</button>
+        </form>
       {% endif %}
     </div>
   </div>

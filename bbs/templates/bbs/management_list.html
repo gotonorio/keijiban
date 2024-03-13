@@ -24,7 +24,10 @@
       {% if perms.register.add_user %}
         <a class="navbar-item" href="{% url 'register:user_list' %}">ユーザ管理</a>
       {% endif %}
-      <a class="navbar-item" href="{% url 'register:logout' %}">ログアウト</a>
+      <form method="post" class="navbar-item" action="{% url 'register:logout' %}">
+        {% csrf_token %}
+        <button type="submit">ログアウト</button>
+      </form>
     </div>
   </div>
 </nav>
