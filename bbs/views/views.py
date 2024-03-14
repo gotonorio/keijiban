@@ -13,10 +13,10 @@ class KeijibanView(generic.TemplateView):
 
     model = File
     template_name = "bbs/keijiban.html"
-    # permission_required = "bbs.add_file"
+    # permission_required = "bbs.view_file"
 
     def get_template_names(self):
-        """templateファイルを切り替える"""
+        """UAmiddlewareクラスによりtemplateファイルを切り替える"""
         if self.request.user_agent_flag == "mobile":
             template_name = "bbs/keijiban_mobile.html"
         else:
