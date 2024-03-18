@@ -39,7 +39,8 @@ class UserUpdateForm(forms.ModelForm):
     """ 管理者が仮ユーザーのis_activeフラグを更新するフォーム """
     group = forms.ModelChoiceField(
         empty_label='Group選択',
-        queryset=Group.objects.all().exclude(name='director'),
+        # queryset=Group.objects.all().exclude(name='director'),
+        queryset=Group.objects.all(),
         required=True,
         widget=forms.Select(attrs={'class': 'select-css'})
         )
