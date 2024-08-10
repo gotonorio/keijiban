@@ -28,10 +28,12 @@ def get_upload_to(instance, filename):
 
 def image_size(value):
     """アップロード写真のサイズを制限"""
-    limit = settings.LIMMIT_IMAGE_SIZE
-    if value.size > limit:
-        mb = limit / 1024 / 1024
-        raise ValidationError(f"ファイルサイズは {mb}MB 以下にしてください。")
+    limit_kb = settings.LIMMIT_IMAGE_SIZE
+    if value.size > limit_kb * 1024:
+        raise ValidationError(f"ファイルサイズは {limit_kb}KB 以下にしてください。")
+    # if value.size > limit:
+    #     mb = limit / 1024 / 1024
+    #     raise ValidationError(f"ファイルサイズは {mb}MB 以下にしてください。")
 
 
 def remove_exif(image_field):

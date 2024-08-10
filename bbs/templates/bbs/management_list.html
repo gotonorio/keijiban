@@ -38,6 +38,7 @@
   <br>
   <div class="content has-text-centered">
     <h3>管理者用リスト</h3>
+    <p>回転処理後は再読み込みをしてください（キャッシュのため）</p>
   </div>
   <br>
   {% comment %} <table class="table table_center_nowrap is-narrow is-striped"> {% endcomment %}
@@ -54,7 +55,9 @@
       <tr>
         {% comment %} <td class="has-text-left">{{file.title}}</td> {% endcomment %}
         <td class="has-text-centered">
-          <img src="{{file.img.url}}" style="width: 200px; auto;">
+          {% if file.img %}
+            <img src="{{file.img.url}}" style="width: 200px; auto;">
+          {% endif %}
         </td>
         {% comment %} <td class="nowrap"> {% endcomment %}
         <td>

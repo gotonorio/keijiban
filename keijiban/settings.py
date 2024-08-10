@@ -133,10 +133,11 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # ------------------------------------------------------------------
 # user setting
 # ------------------------------------------------------------------
-VERSION_NO = "1.0.0 2024-06-05"
+VERSION_NO = "1.0.0 2024-08-10"
 AUTH_USER_MODEL = "register.User"
 # 写真サイズは5MB以下
-LIMMIT_IMAGE_SIZE = 5242880
+# LIMMIT_IMAGE_SIZE = 5242880
+LIMMIT_IMAGE_SIZE = 1000
 CSRF_TRUSTED_ORIGINS = ["https://*.sophiagardens.org"]
 
 # ファイルアップロード用

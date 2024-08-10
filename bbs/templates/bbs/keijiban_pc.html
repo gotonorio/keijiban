@@ -54,9 +54,11 @@
     <h3>掲示板 ({{title|date}})</h3>
     <br>
     {% for file in file_list %}
-      <a href="{% url 'bbs:file_expand' file.pk %}">
-        <img class="{{css}}" src="{{file.img.url}}" style="width: 300px; auto;">
-      </a>
+      {% if file.img %}
+        <a href="{% url 'bbs:file_expand' file.pk %}">
+          <img class="{{css}}" src="{{file.img.url}}" style="width: 300px; auto;">
+        </a>
+      {% endif %}
     {% endfor %}
     <br>
   </div>

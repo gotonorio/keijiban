@@ -30,7 +30,9 @@
   <form action="" method="POST" enctype='multipart/form-data'>
     <div class="content has-text-centered">
       <p>{{file.title}}</p>
-      <p><img src="{{file.img.url}}" style="width: 300px; auto;"></p>
+      {% if file.img %}
+        <p><img src="{{file.img.url}}" style="width: 300px; auto;"></p>
+      {% endif %}
       <br>
       <button type="submit" class="button is-danger">削除する</button>
       <a class="button is-link" href="javascript:void(0);" onclick="window.history.back();">戻る</a>
