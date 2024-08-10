@@ -60,7 +60,7 @@ class File(models.Model):
     title = models.CharField(verbose_name="タイトル", max_length=32)
     summary = models.CharField(verbose_name="概要", max_length=128, blank=True, null=True)
     img = models.ImageField(
-        verbose_name="写真ファイル", upload_to=get_upload_to, validators=[image_size], null=True, blank=True
+        verbose_name="写真ファイル", upload_to=get_upload_to, validators=[image_size], null=True, blank=False
     )
     rank = models.IntegerField(verbose_name="表示順", default=0)
     user = models.ForeignKey(user, verbose_name="名前", on_delete=models.CASCADE)
