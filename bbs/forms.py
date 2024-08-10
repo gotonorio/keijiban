@@ -47,6 +47,7 @@ class FileForm(forms.ModelForm):
             #     'class': "input",
             # }),
         }
+        help_texts = {"img": "※ 写真ファイルサイズは1000KB以下です"}
 
 
 class SwitchCSSForm(forms.Form):
