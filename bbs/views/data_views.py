@@ -97,6 +97,7 @@ class FileRotateView(PermissionRequiredMixin, generic.TemplateView):
         elif direc == 0:
             img_rotate = img.rotate(90, expand=True)
         img_rotate.save(img_path)
+        # ToDo: 画像の回転処理が反映されない画像が表示される。
         qs = File.objects.get(pk=pk)
         context["img"] = qs.img.url
         return context
