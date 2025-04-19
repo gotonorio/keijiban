@@ -12,10 +12,10 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 import logging
 import os
-from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+# BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -28,6 +28,19 @@ DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
+# セキュリティ関係の環境変数を読み込む。
+try:
+    from .private_settings import DB_NAME, MY_SECRET_KEY
+except ImportError:
+    pass
+# ローカル環境用の環境変数を読み込む。
+try:
+    from .local_settings import DEBUG
+except ImportError:
+    pass
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = MY_SECRET_KEY
 
 # Application definition
 
@@ -84,7 +97,7 @@ WSGI_APPLICATION = "keijiban.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "kb.sqlite3",
+        "NAME": os.path.join(BASE_DIR, DB_NAME),
     }
 }
 
@@ -160,17 +173,6 @@ MARKDOWN_EXTENSIONS = [
     "markdown.extensions.extra",
     "markdown.extensions.codehilite",
 ]
-
-# settings.pyの切り替え
-try:
-    from .private_settings import *
-except ImportError:
-    pass
-
-try:
-    from .local_settings import *
-except ImportError:
-    pass
 
 # For debugging
 if DEBUG:
